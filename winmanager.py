@@ -83,13 +83,13 @@ while True:
             res = input('\nChoose a file/folder: ')
 
             print('\n')
-            if res.lower() == 'exit':                            # Exit command to exit from loop
+            if res.lower() == 'exit':                            # Выход в главное меню
                 break
-            elif res.lower() == 'back':                          # Back command to go up one directory
+            elif res.lower() == 'back':                          # Подняться вверх по директории
                 os.chdir('..')
             elif res in os.listdir(os.getcwd()):
                 if os.path.isfile(res):
-                    os.system('"' + res + '"')
+                    os.system('"' + res + '"') # Открытие файла
                 else:
                     os.chdir(res)
             else:
@@ -115,11 +115,11 @@ while True:
             res = input('\nChoose a file to rename: ')
 
             print('\n')
-            if res.lower() == 'exit':      # Exit command to exit from loop
+            if res.lower() == 'exit':      # Выход в главное меню
                 break
-            elif res.lower() == 'back':    # Back command to go up one directory
+            elif res.lower() == 'back':    # Подняться вверх по директории
                 os.chdir('..')
-            elif res.lower() == 'rename':  # Rename command to delete one directory
+            elif res.lower() == 'rename':  # Команда переименования
                 new_name = input("Enter a new name: ")
                 ogDir = os.getcwd()
                 os.chdir('..')
@@ -157,9 +157,9 @@ while True:
 
             print('\n')
             
-            if res.lower() == 'exit':                            # Exit command to exit from loop
+            if res.lower() == 'exit':                            # Выход в главное меню
                 break
-            elif res.lower() == 'back':                          # Back command to go up one directory
+            elif res.lower() == 'back':                          # Подняться вверх по директории
                 os.chdir('..')
             elif res.lower() == 'cut':
                 og_path = os.getcwd()
@@ -235,15 +235,15 @@ while True:
         while True:
             listDirectories()
             print('\n\nType "exit" to go to the main menu.')
-            print('Type "backM" to go up one directory.')
+            print('Type "back" to go up one directory.')
             print('Type "copy" to copy this directory')
 
             res = input('\nChoose a file to copy: ')
 
             print('\n')
-            if res.lower() == 'exit':    # Exit command to exit from loop
+            if res.lower() == 'exit':    # Выход в главное меню 
                 break
-            elif res.lower() == 'back':  # Back command to go up one directory
+            elif res.lower() == 'back':  # Подняться вверх по директории
                 os.chdir('..')
             elif res.lower() == 'copy':
                 og_path = os.getcwd()
@@ -331,11 +331,11 @@ while True:
                     res = input('\nChoose a file to delete: ')
 
                     print('\n')
-                    if res.lower() == 'exit':                        # Exit command to exit from loop
+                    if res.lower() == 'exit':                        # Выход в главное меню
                         break
-                    elif res.lower() == 'back':                      # Back command to go up one directory
+                    elif res.lower() == 'back':                      # Подняться вверх по директории
                         os.chdir('..')
-                    elif res.lower() == 'delete':                    # Delete command to delete one directory
+                    elif res.lower() == 'delete':                    # Команда удаления
                         # Warning to prevent unnecessary deletion
                         print('Are you sure you want to permanently delete this folder? (YES/NO)')
                         ans = input('Yes or No: ')
@@ -377,11 +377,11 @@ while True:
                     res = input('\nChoose a file to delete: ')
 
                     print('\n')
-                    if res.lower() == 'exit':    # Exit command to exit from loop
+                    if res.lower() == 'exit':    # Выход в главное меню
                         break
-                    elif res.lower() == 'back':  # Back command to go up one directory
+                    elif res.lower() == 'back':  # Подняться вверх по директории
                         os.chdir('..')
-                    elif res.lower() == 'delete':  # Delete command to delete one directory
+                    elif res.lower() == 'delete':  # Команда удаления
                         # Warning to prevent unnecessary deletion
                         print('Are you sure you want to send this folder to recycle bin? (YES/NO)')
                         ans = input('Yes or No: ')
@@ -437,9 +437,9 @@ while True:
 
             res = input('\nChoose a folder or create now: ')
 
-            if res.lower() == 'exit':    # Exit command to exit from loop
+            if res.lower() == 'exit':    # Выход в главное меню
                 break
-            elif res.lower() == 'back':  # Back command to go up one directory
+            elif res.lower() == 'back':  # Подняться вверх по директории
                 os.chdir('..')
             elif res.lower() == "now":
                 check_create = input("If you want to create file, write down filename:")
@@ -459,4 +459,4 @@ while True:
     if result.lower() == "exit":
         break
     if not (result in list_of_commands):
-        print("Wrong input")
+        print("Wrong input value")

@@ -41,32 +41,34 @@ while True:
         while True:
             listDirectories()
             need_dir = input("Type folder path or command: ")
-            if need_dir == 'back':
+            if need_dir.lower() == 'back':
                 os.chdir('..')
+            elif need_dir.lower() == 'exit':
+                break
             elif os.path.isdir(need_dir):
                 os.popen('cd ' + need_dir)
                 os.chdir(os.path.expandvars(need_dir))
                 listDirectories()
             elif os.path.isfile(need_dir):
                 os.system('cat ' + need_dir)
-            elif need_dir == 'exit':
-                break
             else:
                 print("Folder not found")
     if need_com == "2":
         while True:
             res = input("Type file path: ")
-            if os.path.isfile(res):
+            if res.lower() == "exit":
+                break
+            elif os.path.isfile(res):
                 write_res = input("Type text: ")
                 os.system('echo ' + '"' + write_res + '" ' + '>> ' + res)
-            elif res == "exit":
-                break
             else:
                 print("File not found")
     if need_com == '3':
         while True:
             res = input("Type file path: ")
-            if os.path.isdir(res):
+            if res.lower() == "exit":
+                break
+            elif os.path.isdir(res):
                 os.popen('cd ' + res)
                 os.chdir(os.path.expandvars(res))
                 file_or_dir = input("You want to create dir or file? ")
@@ -77,14 +79,14 @@ while True:
                     name_input = input("Type dirname: ")
                     os.system('mkdir ' + name_input)
                     listDirectories()
-            elif res == "exit":
-                break
             else:
                 print("Incorrect file path")
     if need_com == "4":
         while True:
             res = input("Type file path: ")
-            if os.path.isdir(res):
+            if res.lower() == "exit":
+                break
+            elif os.path.isdir(res):
                 os.chdir(os.path.expandvars(res))
                 need_file = input("Type filename: ")
                 if os.path.isfile(need_file):
@@ -92,14 +94,14 @@ while True:
                     if os.path.isdir(copy_dir):
                         os.system('cp ' + need_file + " " + copy_dir)
                         listDirectories()
-            elif res == "exit":
-                break
             else:
                 print("Incorrect dir input")
     if need_com == "5":
         while True:
             res = input("Type file path: ")
-            if os.path.isdir(res):
+            if res.lower() == "exit":
+                break
+            elif os.path.isdir(res):
                 os.chdir(os.path.expandvars(res))
                 listDirectories()
                 need_file = input("Type filename to delete: ")
@@ -107,14 +109,14 @@ while True:
                     os.system('rm ' + need_file)
                 else:
                     print("It is not a file")
-            elif res == "exit":
-                break
             else:
                 print("Incorrect file path")
     if need_com == "6":
         while True:
             res = input("Type file path: ")
-            if os.path.isdir(res):
+            if res.lower() == "exit":
+                break
+            elif os.path.isdir(res):
                 os.popen('cd ' + res)
                 listDirectories()
                 res2 = input("Type filename: ")
@@ -122,12 +124,9 @@ while True:
                     res3 = input("Type new filename: ")
                     os.system('mv ' + res2 + " " + res3)
                     listDirectories()
-            elif res == "exit":
-                break
             else:
                 print("file not found")
-    if need_com == "exit":
+    if need_com.lower() == "exit":
         break
     if not (need_com in list_of_commands):
-        print("Wrong input")
-
+        print("Wrong input value")
