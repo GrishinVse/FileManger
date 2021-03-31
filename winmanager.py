@@ -100,7 +100,7 @@ while True:
             else:
                 print('No file/folder exist of this name.')
     if result == '2':
-        print("You chose to rename")
+        print("You choose to rename")
         print('Drives: ')
         for x in range(len(drives)):
             print(str(1 + x) + '. ' + drives[x])
@@ -141,7 +141,7 @@ while True:
             else:
                 print('No file/folder exist of this name.')
     if result == '3':
-        print("You chose to move")
+        print("You choose to move")
         print('Drives: ')
         for x in range(len(drives)):
             print(str(1 + x) + '. ' + drives[x])
@@ -226,7 +226,7 @@ while True:
             else:
                 print('No file/folder exist of this name.')
     if result == '4':
-        print("You chose to copy")
+        print("You choose to copy")
         print('Drives: ')
         for x in range(len(drives)):
             print(str(1 + x) + '. ' + drives[x])
@@ -362,7 +362,7 @@ while True:
                     else:
                         print('No file/folder exist of this name.')
             elif query == '2':
-                print('You chose to temporarily delete files/folders.')
+                print('You choose to temporarily delete files/folders.')
                 print('Drives: ')
                 for x in range(len(drives)):
                     print(str(1 + x) + '. ' + drives[x])
