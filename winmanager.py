@@ -41,40 +41,45 @@ def listDirectories():
     for x in listdir:
         print(x)
 
+def quick_access(drives_loc):
+    # Home Screen
+    print('\nQuick Acess:\n1. Documents\n2. Videos\n3. Pictures\n4. Downloads\n')
+    print('Drives: ')
+    for x in range(len(drives_loc)):
+        print(str(5 + x) + '. ' + drives_loc[x])
+    while True:
+        inp = input("\nEnter your Choice: ")
+        if inp == '1':
+            path = 'C:\\Users\\$USERNAME\\Documents'
+            os.chdir(os.path.expandvars(path))
+            break
+        elif inp == '2':
+            path = 'C:\\Users\\$USERNAME\\Videos'
+            os.chdir(os.path.expandvars(path))
+            break
+        elif inp == '3':
+            path = 'C:\\Users\\$USERNAME\\Pictures'
+            os.chdir(os.path.expandvars(path))
+            break
+        elif inp == '4':
+            path = 'C:\\Users\\$USERNAME\\Downloads'
+            os.chdir(os.path.expandvars(path))
+            break
+        elif inp in drives_loc:
+            os.chdir(inp + '\\')
+            break
+        else:
+            print('Error\nEnter a correct input / drive name.\n')
 
 while True:
     print('{:*^30}'.format('MAIN MENU') + '\n')
+    print(os.getcwd())
     print("1.Open files/folders \n2.Rename \n3.Move and Paste \n4.Copy and Paste \n5.Delete\n6.Create files\n>EXIT<")
     result = input("*"*30 + "\nChoose one of the options: ")
     if result == '1':
-        # Home Screen
-        print('\nQuick Acess:\n1. Documents\n2. Videos\n3. Pictures\n4. Downloads\n')
-        print('Drives: ')
-        for x in range(len(drives)):
-            print(str(5 + x) + '. ' + drives[x])
-        while True:
-            inp = input("\nEnter your Choice: ")
-            if inp == '1':
-                path = 'C:\\Users\\$USERNAME\\Documents'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp == '2':
-                path = 'C:\\Users\\$USERNAME\\Videos'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp == '3':
-                path = 'C:\\Users\\$USERNAME\\Pictures'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp == '4':
-                path = 'C:\\Users\\$USERNAME\\Downloads'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp in drives:
-                os.chdir(inp + '\\')
-                break
-            else:
-                print('Error\nEnter a correct input / drive name.\n')
+
+        quick_access(drives)
+
         while True:
             listDirectories()
             print('\n\nType "exit" to go to the main menu.')
@@ -175,7 +180,7 @@ while True:
                         print('Error\nEnter a correct drive name.\n')
                 while True:
                     listDirectories()
-                    print('\nType "pasteManager" to paste this folder in current directory')
+                    print('\nType "paste" to paste this folder in current directory')
 
                     res2 = input('\nChoose a folder to open: ')
 
@@ -259,7 +264,7 @@ while True:
                         print('Error\nEnter a correct drive name.\n')
                 while True:
                     listDirectories()
-                    print('\nType "pasteManager" to copy this file in current directory')
+                    print('\nType "paste" to copy this file in current directory')
 
                     res2 = input('\nChoose a folder to open: ')
 
@@ -336,7 +341,7 @@ while True:
                     elif res.lower() == 'back':                      # Подняться вверх по директории
                         os.chdir('..')
                     elif res.lower() == 'delete':                    # Команда удаления
-                        # Warning to prevent unnecessary deletion
+                        # Предупреждение об удалении
                         print('Are you sure you want to permanently delete this folder? (YES/NO)')
                         ans = input('Yes or No: ')
                         if ans.lower() == 'yes' or 'y':
@@ -346,7 +351,7 @@ while True:
                         break
                     elif res in os.listdir(os.getcwd()):
                         if os.path.isfile(res):
-                            # Warning to prevent unnecessary deletion
+                            # Предупреждение об удалении
                             print('Are you sure you want to permanently delete this file? (YES/NO)')
                             ans = input('Yes or No: ')
                             if ans.lower() == 'yes' or 'y':
@@ -382,7 +387,7 @@ while True:
                     elif res.lower() == 'back':  # Подняться вверх по директории
                         os.chdir('..')
                     elif res.lower() == 'delete':  # Команда удаления
-                        # Warning to prevent unnecessary deletion
+                        # Предупреждение об удалении
                         print('Are you sure you want to send this folder to recycle bin? (YES/NO)')
                         ans = input('Yes or No: ')
                         if ans.lower() == 'yes' or 'y':
@@ -391,7 +396,7 @@ while True:
                             send2trash.send2trash(path)
                     elif res in os.listdir(os.getcwd()):
                         if os.path.isfile(res):
-                            # Warning to prevent unnecessary deletion
+                            # Предупреждение об удалении
                             print('Are you sure you want to send this folder to recycle bin? (YES/NO)')
                             ans = input('Yes or No: ')
                             if ans.lower() == 'yes' or 'y':
@@ -403,37 +408,16 @@ while True:
             else:
                 print('You chose wrong number')
     if result == '6':
-        print('\nQuick Acess:\n1. Documents\n2. Videos\n3. Pictures\n4. Downloads\n')
-        print('Drives: ')
-        for x in range(len(drives)):
-            print(str(5 + x) + '. ' + drives[x])
-        while True:
-            inp = input("\nEnter your Choice: ")
-            if inp == '1':
-                path = 'C:\\Users\\$USERNAME\\Documents'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp == '2':
-                path = 'C:\\Users\\$USERNAME\\Videos'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp == '3':
-                path = 'C:\\Users\\$USERNAME\\Pictures'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp == '4':
-                path = 'C:\\Users\\$USERNAME\\Downloads'
-                os.chdir(os.path.expandvars(path))
-                break
-            elif inp in drives:
-                os.chdir(inp + '\\')
-                break
-            else:
-                print('Error\nEnter a correct input / drive name.\n')
+        
+        quick_access(drives)
+
         while True:
             listDirectories()
             print('\n\nType "exit" to go to the main menu.')
             print('Type "back" to go up one directory.')
+            print('Type "now" to create file in this directory.')
+
+            print("**>" + os.getcwd() + "<**")
 
             res = input('\nChoose a folder or create now: ')
 
@@ -442,18 +426,29 @@ while True:
             elif res.lower() == 'back':  # Подняться вверх по директории
                 os.chdir('..')
             elif res.lower() == "now":
-                check_create = input("If you want to create file, write down filename:")
-                if check_create == "exit":
+                d_or_f = input("Input <D> to create Directory or <F> to create File: ")
+                if d_or_f.lower() == "exit":
                     break
-                else:
+                elif d_or_f.lower() == "f":
+                    check_create = input("Input file name:")
                     os.system("copy nul " + check_create + " > nul")
+                elif d_or_f.lower() == "d":
+                    check_create = input("Input directory name:")
+                    os.system('md "' + os.getcwd() + "\\" + check_create)
+                print("**>" + os.getcwd() + "<**")
             elif res in os.listdir(os.getcwd()):
                 os.chdir(res)
-                check_create = input("If you want to create file, write down filename:")
-                if check_create == "exit":
+
+                d_or_f = input("Input <D> to create Directory or <F> to create File: ")
+                if d_or_f.lower() == "exit":
                     break
-                else:
-                    os.system("copy nul " + check_create)
+                elif d_or_f.lower() == "f":
+                    check_create = input("Input file name:")
+                    os.system("copy nul " + check_create + " > nul")
+                elif d_or_f.lower() == "d":
+                    check_create = input("Input directory name:")
+                    os.system('md "' + os.getcwd() + "\\" + check_create)
+
             else:
                 print('No folder exist of this name.')
     if result.lower() == "exit":
